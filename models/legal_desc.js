@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     block:{type: DataTypes.STRING},
     long_legal:{type: DataTypes.BOOLEAN, defaultValue: false},
     subdivision:{type: DataTypes.STRING}
-  });
+  }, {timestamps: false});
 
   Legal_Desc.associate = function(models){
 

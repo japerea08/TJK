@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
     city:{type: DataTypes.STRING, allowNull: false},
     state:{type: DataTypes.STRING, allowNull: false},
     zipcode:{type: DataTypes.STRING, allowNull: false},
+  },
+  {
+    timestamps: false
   });
 
   Survey.associate = function(models) {

@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     community_number:{type: DataTypes.INTEGER, allowNull: false},
     panel:{type: DataTypes.STRING, allowNull: false},
     date_of_index:{type: DataTypes.STRING, allowNull: false},
-  });
+  },{timestamps: false});
 
   Elevation.associate = function(models){
 

@@ -18,9 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Import routes and give the server access to them.
-//var routes = require("./controllers/burgers_controller.js");
+require("./routes/html-routes.js")(app);
 
-//app.use(routes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
