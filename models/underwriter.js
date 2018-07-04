@@ -5,5 +5,14 @@ module.exports = function(sequelize, DataTypes) {
     name:{type: DataTypes.STRING},
   });
 
+   Underwriter.associate = function(models){
+
+    Underwriter.belongsTo(models.Survey, {
+      foreignKey:{ allowNull: false},
+      onDelete: "cascade"
+    });
+
+  };
+
   return Underwriter;
 };

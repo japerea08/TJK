@@ -5,5 +5,14 @@ module.exports = function(sequelize, DataTypes) {
     name:{type: DataTypes.STRING},
   });
 
+  Lender.associate = function(models){
+
+    Lender.belongsTo(models.Survey, {
+      foreignKey:{ allowNull: false},
+      onDelete: "cascade"
+    });
+
+  };
+
   return Lender;
 };

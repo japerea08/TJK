@@ -10,5 +10,14 @@ module.exports = function(sequelize, DataTypes) {
     subdivision:{type: DataTypes.STRING}
   });
 
+  Legal_Desc.associate = function(models){
+
+    Legal_Desc.belongsTo(models.Survey, {
+      foreignKey:{ allowNull: false},
+      onDelete: "cascade"
+    });
+
+  };
+
   return Legal_Desc;
 };

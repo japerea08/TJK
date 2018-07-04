@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Survey = sequelize.define("Survey", {
-    snum:{type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true, defaultValue: '180001'},
+    snum:{type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true},
     buyer:{type: DataTypes.STRING},
     cost:{type: DataTypes.DOUBLE, defaultValue: '400'},
     date_delivered:{type: DataTypes.DATEONLY},
@@ -15,9 +15,21 @@ module.exports = function(sequelize, DataTypes) {
   Survey.associate = function(models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
-    Author.hasMany(models.Post, {
+    Survey.hasOne(models.Elevation, {
       onDelete: "cascade"
     });
+
+    Survey.hasOne(models.Legal_Desc, {
+      onDelete: "cascade"
+    });
+
+    Survey.hasOne(models.Lender, {
+      onDelete: "cascade"
+    });
+
+    Survey.hasOne(models.Underwriter, {
+      onDelete: "cascade"
+    });    
   };
 
   return Survey;

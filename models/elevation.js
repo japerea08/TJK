@@ -8,6 +8,16 @@ module.exports = function(sequelize, DataTypes) {
     panel:{type: DataTypes.STRING, allowNull: false},
     date_of_index:{type: DataTypes.STRING, allowNull: false},
   });
+
+  Elevation.associate = function(models){
+
+    Elevation.belongsTo(models.Survey, {
+      foreignKey:{ allowNull: false},
+      onDelete: "cascade"
+    });
+
+  };
+
   return Elevation;
 
 };
