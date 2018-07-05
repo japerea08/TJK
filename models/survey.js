@@ -32,6 +32,10 @@ module.exports = function(sequelize, DataTypes) {
 
     Survey.hasOne(models.Underwriter, {
       onDelete: "cascade"
+    });
+
+    Survey.belongsTo(models.User, {
+      foreignKey:{ allowNull: false},
     });    
   };
 

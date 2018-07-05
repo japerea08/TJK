@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/login", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/views/admin/login.html"));
+    res.sendFile(path.join(__dirname, "../public/views/login.html"));
   });
 
   // cms route loads cms.html
