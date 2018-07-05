@@ -19,12 +19,12 @@ module.exports = function(app) {
 
   // cms route loads cms.html
   app.get("/form", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/views/admin/index.html"));
+    res.sendFile(path.join(__dirname, "../public/views/admin/form.html"));
   });
 
   // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  app.get("/signup", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/views/client/signup.html"));
   });
 
   // authors route loads author-manager.html
