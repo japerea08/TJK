@@ -22,7 +22,7 @@ module.exports = function(app) {
 
   // cms route loads cms.html
   app.get("/form", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/views/admin/form.html"));
+    res.sendFile(path.join(__dirname, "../public/views/client/form.html"));
   });
 
   // blog route loads blog.html
