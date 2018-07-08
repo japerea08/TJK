@@ -9,5 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     email:{type: DataTypes.STRING, validate:{isEmail: true}},
     phone_number:{type: DataTypes.STRING}
   });
+
+  Company.associate = function(models){
+    Company.hasMany(models.Survey); 
+  };
   return Company;
 };

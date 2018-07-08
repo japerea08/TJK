@@ -87,6 +87,13 @@
             </div>
 
             <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="zip">City<span class="text-muted">(Required)</span></label>
+                <input type="text" class="form-control" id="city" placeholder="" required>
+                <div class="invalid-feedback">
+                  City code required.
+                </div>
+              </div>
               <div class="col-md-4 mb-3">
                 <label for="state">State<span class="text-muted">(Required)</span></label>
                 <select class="custom-select d-block w-100" id="state" required>
@@ -195,6 +202,13 @@
 
             <div class="row">
               <div class="col-md-3 mb-3">
+                <label for="zip">City<span class="text-muted">(Required)</span></label>
+                <input type="text" class="form-control" id="surveyCity" placeholder="" required>
+                <div class="invalid-feedback">
+                  City code required.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
                 <label for="state">State</label>
                 <select class="custom-select d-block w-100" id="surveyState" required>
                   <option value="">Choose...</option>
@@ -273,6 +287,10 @@
                 <label for="block">Block</label>
                 <input type="text" class="form-control" id="block" placeholder="">
               </div>
+              <div class="col-md-3 mb-3">
+                <label for="">Long Legal<span class="text-muted"> (Click if Long Legal)</span></label>
+                <input type="checkbox" class="form-control" id="longLegal" value="Yes">
+              </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -286,12 +304,6 @@
               <div class="col-md-3 mb-3">
                 <label for="page">Page</label>
                 <input type="text" class="form-control" id="page" placeholder="">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label for="certs">Certifications</label>
-                <input type="text" class="form-control" id="certs">
               </div>
             </div>
             <h4 class="mb-3">Flood Zone Information</h4>
@@ -343,7 +355,7 @@
             </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="button" id="" style="width: 10%; margin: auto">Create Survey</button>
+            <button class="btn btn-primary btn-lg btn-block" type="button" id="submitButton" style="width: 10%; margin: auto">Create Survey</button>
           </form>
         </div>
       </div>

@@ -7,8 +7,5 @@ module.exports = function(sequelize, DataTypes) {
     hourly_rate:{type: DataTypes.DOUBLE, allowNull: false},
     emp_type:{type: DataTypes.STRING, allowNull: false},
   },{timestamps: false});
-
-
-
   return Employee;
 };

@@ -35,13 +35,11 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
 
+    Survey.hasMany(models.Employee);
+
     Survey.hasOne(models.Underwriter, {
       onDelete: "cascade"
-    });
-
-    Survey.belongsTo(models.User, {
-      foreignKey:{ allowNull: false},
-    });    
+    });   
   };
 
   return Survey;
