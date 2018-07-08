@@ -16,6 +16,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/views/admin/index.html"));
   });
 
+  app.get("/database.html", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/views/admin/database.html"));
+  });
+
   app.get("/login", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/views/login.html"));
   });
@@ -23,6 +27,11 @@ module.exports = function(app) {
   // cms route loads cms.html
   app.get("/form", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/views/client/form.html"));
+  });
+
+   // cms route loads cms.html
+  app.get("/adminform", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/views/admin/createsurveyform.html"));
   });
 
   // blog route loads blog.html

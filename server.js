@@ -19,11 +19,13 @@ app.use(bodyParser.json());
 
 // Import routes and give the server access to them.
 require("./routes/html-routes.js")(app);
+require("./routes/database-routes.js")(app);
+
 
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

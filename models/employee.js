@@ -8,5 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     emp_type:{type: DataTypes.STRING, allowNull: false},
   },{timestamps: false});
 
+
+
   return Employee;
 };

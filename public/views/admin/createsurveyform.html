@@ -22,12 +22,19 @@
     <div class="container">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="https://d2isyty7gbnm74.cloudfront.net/unsafe/646x646/https://square-production.s3.amazonaws.com/files/12e75d284a56c4cee1161f92741c586ebf881692/original.png" alt="" width="72" height="72">
-        <h2>Survey Request Form</h2>
-        <p class="lead">TJK surveyors will work on the order as soon as it comes in. If you have any questions or concerns please don’t hesitate on calling us at 786-242-7692.</p>
+        <h2>Survey Create Form</h2>
       </div>
-        <div class="col-md-8 order-md-1">
+
           <h4 class="mb-3">Customer Information</h4>
           <form class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+              <label for="companies">Companies</label>
+                <select class="custom-select d-block w-100" id="companyDropdown">
+                  <option value="">Choose...</option>
+                </select>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="companyName">Company Name<span class="text-muted">(Required)</span></label>
@@ -37,6 +44,8 @@
                   Valid Company name is required.
                 </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name<span class="text-muted">(Required)</span></label>
                 <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
@@ -51,7 +60,10 @@
                   Valid last name is required.
                 </div>
               </div>
+              
             </div>
+              
+       
 
             <div class="mb-3">
               <label for="email">Email <span class="text-muted">(Optional)</span></label>
@@ -182,7 +194,7 @@
             </div>
 
             <div class="row">
-              <div class="col-md-4 mb-3">
+              <div class="col-md-3 mb-3">
                 <label for="state">State</label>
                 <select class="custom-select d-block w-100" id="surveyState" required>
                   <option value="">Choose...</option>
@@ -238,7 +250,6 @@
                   <option value="WI">Wisconsin</option>
                   <option value="WY">Wyoming</option>
                 </select>
-                </select>
                 <div class="invalid-feedback">
                   Please provide a valid state.
                 </div>
@@ -250,9 +261,89 @@
                   Zip code required.
                 </div>
               </div>
+
+            </div>
+            <h4 class="mb-3">Legal Description</h4>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="lot">Lot</label>
+                <input type="text" class="form-control" id="lot" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="block">Block</label>
+                <input type="text" class="form-control" id="block" placeholder="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="subdivision">Subdivision</label>
+                <input type="text" class="form-control" id="subdivision" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="plat">Plat Book</label>
+                <input type="text" class="form-control" id="plat" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="page">Page</label>
+                <input type="text" class="form-control" id="page" placeholder="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <label for="certs">Certifications</label>
+                <input type="text" class="form-control" id="certs">
+              </div>
+            </div>
+            <h4 class="mb-3">Flood Zone Information</h4>
+            <div class="row">
+              <div class="col-md-2 mb-2">
+                <label for="flood-zone">Flood Zone</label>
+                <input type="text" class="form-control" id="flood-zone" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="base-flood">Base Flood</label>
+                <input type="text" class="form-control" id="base-flood" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="community">Community</label>
+                <input type="text" class="form-control" id="community" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="panel">Panel No.</label>
+                <input type="text" class="form-control" id="panel" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="firm-date">Firm Date</label>
+                <input type="text" class="form-control" id="firm-date" placeholder="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="date-ordered">Date Ordered</label>
+                <input type="date" class="form-control" id="date-ordered" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="date-needed">Date Needed</label>
+                <input type="date" class="form-control" id="date-needed" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cost">Cost</label>
+                <input type="text" class="form-control" id="cost" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="elev-cost">Elevation Cost</label>
+                <input type="text" class="form-control" id="elev-cost" placeholder="">
+              </div>              
+            </div>
+            <div class="row">
+              <label>Comments</label>
+              <div class="col-md-12">
+                <textarea id="comment" rows="5" cols="100"></textarea>
+              </div>
+            </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="button" id="">Order Survey</button>
+            <button class="btn btn-primary btn-lg btn-block" type="button" id="" style="width: 10%; margin: auto">Create Survey</button>
           </form>
         </div>
       </div>
