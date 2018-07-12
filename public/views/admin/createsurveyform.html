@@ -88,6 +88,14 @@
 
             <div class="row">
               <div class="col-md-3 mb-3">
+                <label for="phone">Phone<span class="text-muted">(Required)</span></label>
+                <input type="text" class="form-control" id="phone" placeholder="" required>
+                <div class="invalid-feedback">
+                  Phone required.
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-3">
                 <label for="zip">City<span class="text-muted">(Required)</span></label>
                 <input type="text" class="form-control" id="city" placeholder="" required>
                 <div class="invalid-feedback">
@@ -165,12 +173,12 @@
             <h4 class="mb-3">Property to be surveyed</h4>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="companyName">Contact Name for Access<span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="">
+                <label for="contact">Contact Name for Access<span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="contactName" placeholder="" value="">
               </div>
               <div class="col-md-6 mb-3">
                 <label for="phoneNumber">Contact Number<span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="" value="">
+                <input type="text" class="form-control" id="contactNumber" placeholder="" value="">
               </div>
               <div class="col-md-6 mb-3">
                 <label for="buyers">Buyer(s)<span class="text-muted">(Optional)</span></label>
@@ -291,6 +299,10 @@
                 <label for="">Long Legal<span class="text-muted"> (Click if Long Legal)</span></label>
                 <input type="checkbox" class="form-control" id="longLegal" value="Yes">
               </div>
+              <div class="col-md-3 mb-3">
+                <label for="county">County</label>
+                <input type="text" class="form-control" id="county" placeholder="">
+              </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -331,10 +343,6 @@
             </div>
             <div class="row">
               <div class="col-md-3 mb-3">
-                <label for="date-ordered">Date Ordered</label>
-                <input type="date" class="form-control" id="date-ordered" placeholder="">
-              </div>
-              <div class="col-md-3 mb-3">
                 <label for="date-needed">Date Needed</label>
                 <input type="date" class="form-control" id="date-needed" placeholder="">
               </div>
@@ -353,9 +361,8 @@
                 <textarea id="comment" rows="5" cols="100"></textarea>
               </div>
             </div>
-            </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="button" id="submitButton" style="width: 10%; margin: auto">Create Survey</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitButton" style="width: 10%; margin: auto">Create Survey</button>
           </form>
         </div>
       </div>
@@ -373,14 +380,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="../../assets/js/surveyform.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
+    
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="../../assets/js/vendor/holder.min.js"></script>
+    
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -404,4 +411,8 @@
       })();
     </script>
   </body>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/adminsurveyform.js"></script>
 </html>

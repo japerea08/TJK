@@ -34,6 +34,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/views/admin/createsurveyform.html"));
   });
 
+  app.get("/editsurvey", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/views/admin/editsurvey.html"));
+  });
+
   // blog route loads blog.html
   app.get("/signup", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/views/client/signup.html"));

@@ -1,34 +1,73 @@
-const db = require("../models");
+const Survey = require("../models/survey.js");
+const Company = require("../models/company.js");
+const Elevation = require("../models/elevation.js");
+const Legal = require("../models/legal.js");
 
 
 module.exports = function(app) {
   //first route will get back all the survey orders in the db
   app.get("/api/orders", function(req, res) {
-    // 1. Add a join to include all of each Author's Posts
-    //you can use 'include: db.Schedule' inside the curly braces in the method to bring the doctor's schedule
-    db.Survey.findAll({
-    }).then(function(choice) {
-      res.send(choice);
-    });
+	   	Survey.selectAll(function(data){
+	    res.send(data);
+	  });
   });
 
-  //route will return the client with the passed ID
-  app.get("/api/clients/:id", function(req, res) {
-    // 2; Add a join to include all of the Author's Posts here
-    db.client.findOne({
-      where: {
-        clientID: req.params.id
-      }
-    }).then(function(dbClient) {
-      res.json(dbClient);
-    });
+  //route 
+  app.get("/api/number", function(req, res) {
+  		//get last record
+  		Survey.getLastOne(function(data){
+  			console.log(data);
+  			res.send(data);
+  		});
   });
 
   //these are the posts
-  app.post("/api/clients/choice", function(req, res) {
-    db.choice.create(req.body).then(function(dbAuthor) {
-      res.json(dbAuthor);
-    });
+  app.post("/api/create", function(req, res) {
+  	var cols = [];
+  	var vals = [];
+  	//insert new survey order
+  	for (var key in req.body) {
+    	// skip loop if the property is from prototype
+    	//if (!req.body.hasOwnProperty(key)) continue;
+    	//the key is the name of the table
+    	//console.log(key);
+    	var obj = req.body[key];
+
+	    for (var prop in obj) {
+	    	cols.push(prop);
+	        vals.push(obj[prop])// your code
+
+    	}
+    	//check to see which insert statement
+    	if(key === "company"){
+    		//company insert
+    		Company.insert(cols, vals, function(result){
+    			//res.send(result);
+    		});
+    	}
+    	else if(key === "survey"){
+    		//survey insert
+    		Survey.insert(cols, vals, function(result){
+    			//res.send(result);
+    		});
+    	}
+    	else if(key === "elevation"){
+    		Elevation.insert(cols, vals, function(result){
+    			//res.send(result);
+    		});
+    	}
+    	else if(key === "legal"){
+    		Legal.insert(cols, vals, function(result){
+    			//res.send(result);
+    		});
+    	}
+    	/*console.log(key);
+    	for(var i = 0; i < vals.length; i++){
+    		console.log(cols[i]+" "+vals[i]);
+    	}*/
+	    cols = [];
+	    vals= [];
+	}
   });
 
   app.delete("/api/authors/:id", function(req, res) {

@@ -1,22 +1,32 @@
-module.exports = function(sequelize, DataTypes) {
+const orm = require("../config/orm.js");
 
-  var Elevation = sequelize.define("Elevation", {
-    elev_id:{type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    flood_zone:{type: DataTypes.STRING, allowNull: false},
-    base_flood:{type: DataTypes.STRING, allowNull: false},
-    community_number:{type: DataTypes.INTEGER, allowNull: false},
-    panel:{type: DataTypes.STRING, allowNull: false},
-    date_of_index:{type: DataTypes.STRING, allowNull: false},
-  },{timestamps: false});
-
-  Elevation.associate = function(models){
-
-    Elevation.belongsTo(models.Survey, {
-      foreignKey:{ allowNull: false},
+//functions to call the orm functions
+const elevation = {
+  selectAll: function(cb){
+    //call the orm function
+    orm.selectAll("survey", function(res){
+      cb(res);
     });
+  },
 
-  };
+  getLastOne: function(cb){
+    orm.getLastOne(function(res){
+      cb(res);
+    });
+  },
 
-  return Elevation;
+  insert: function(cols, vals, cb){
+    orm.insertOne("elevation",cols, vals, function(res){
+      cb(res);
+    });
+  },
+
+  update: function(id, cb){
+    orm.updateOne(id, function(res){
+      cb(res);
+    });
+  }
 
 };
+
+module.exports = elevation;

@@ -1,6 +1,19 @@
 //In this file we will create mySQL commands 
 const connection = require("../config/connection.js");
 
+// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
+// ["?", "?", "?"].toString() => "?,?,?";
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+};
+
+
 const orm = {
 	selectAll: function(table, cb){
 		var queryString = "SELECT * FROM ??";
@@ -11,10 +24,27 @@ const orm = {
 
 		});
 	},
+
+	getLastOne: function(cb){
+		var queryString = "";
+		connection.query("SELECT snum FROM survey ORDER BY snum DESC LIMIT 1", function(err, result){
+			if(!!err)
+				throw err;
+			cb(result);
+		});
+
+	},
+
 	//sql insert statement
-	insertOne: function(table, name, cb){
-		var queryString = "INSERT into burgers (burger_name, devoured) VALUES (?,?)";
-		connection.query(queryString, [name, false], function(err, result){
+	insertOne: function(table, cols, vals, cb){
+		var queryString = "INSERT into " + table;
+
+		//build the query
+		queryString += " (" + cols.toString() + ") VALUES (" + printQuestionMarks(vals.length) + ") ";
+		console.log(queryString);
+		console.log(vals);
+
+		connection.query(queryString, vals, function(err, result){
 			if(!!err)
 				throw err;
 			console.log("Inserted");
@@ -22,6 +52,7 @@ const orm = {
 		});
 
 	},
+
 	updateOne: function(id, cb){
 		var queryString = "UPDATE burgers SET devoured = true WHERE id = ?";
 		connection.query(queryString, [id], function(err, result){
@@ -34,3 +65,4 @@ const orm = {
 };
 
 module.exports = orm;
+
