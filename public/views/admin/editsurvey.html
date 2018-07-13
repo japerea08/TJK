@@ -6,15 +6,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-
+    
     <title>Survey Request</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-
     <!-- Custom styles for this template -->
     <link href="../../assets/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/database.css">
   </head>
 
   <body class="bg-light">
@@ -22,24 +22,23 @@
     <div class="container">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="https://d2isyty7gbnm74.cloudfront.net/unsafe/646x646/https://square-production.s3.amazonaws.com/files/12e75d284a56c4cee1161f92741c586ebf881692/original.png" alt="" width="72" height="72">
-        <h2>Survey Request Form</h2>
-        <p class="lead">TJK surveyors will work on the order as soon as it comes in. If you have any questions or concerns please don’t hesitate on calling us at 786-242-7692.</p>
+        <h2>Survey Edit Form</h2>
       </div>
-        <div class="col-md-8 order-md-1">
-          <label>If you have an Account click</label>
-          <button type="button" id="loginButton" class="btn btn-primary" onclick="location.href='/login'">Log In</button>
-          <label>Or if you want to Order a Survey as a Guest, just fill out the form below:</label>
+          <h2 id="surveyNumber"></h2> <br>
           <h4 class="mb-3">Customer Information</h4>
           <form class="needs-validation" novalidate>
+  
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="companyName">Company Name<span class="text-muted">(Required)</span></label>
-                <label style="font-weight: bold">(Type "Self" if not ordering for a company.)</label>
                 <input type="text" class="form-control" id="companyName" placeholder="" value="" required>
                 <div class="invalid-feedback">
                   Valid Company name is required.
                 </div>
               </div>
+            </div>
+
+            <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name<span class="text-muted">(Required)</span></label>
                 <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
@@ -54,7 +53,10 @@
                   Valid last name is required.
                 </div>
               </div>
+              
             </div>
+              
+       
 
             <div class="mb-3">
               <label for="email">Email <span class="text-muted">(Optional)</span></label>
@@ -78,6 +80,21 @@
             </div>
 
             <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="phone">Phone<span class="text-muted">(Required)</span></label>
+                <input type="text" class="form-control" id="phone" placeholder="" required>
+                <div class="invalid-feedback">
+                  Phone required.
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label for="zip">City<span class="text-muted">(Required)</span></label>
+                <input type="text" class="form-control" id="city" placeholder="" required>
+                <div class="invalid-feedback">
+                  City code required.
+                </div>
+              </div>
               <div class="col-md-4 mb-3">
                 <label for="state">State<span class="text-muted">(Required)</span></label>
                 <select class="custom-select d-block w-100" id="state" required>
@@ -149,12 +166,12 @@
             <h4 class="mb-3">Property to be surveyed</h4>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="companyName">Contact Name for Access<span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="">
+                <label for="contact">Contact Name for Access<span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="contactName" placeholder="" value="">
               </div>
               <div class="col-md-6 mb-3">
                 <label for="phoneNumber">Contact Number<span class="text-muted">(Optional)</span></label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="" value="">
+                <input type="text" class="form-control" id="contactNumber" placeholder="" value="">
               </div>
               <div class="col-md-6 mb-3">
                 <label for="buyers">Buyer(s)<span class="text-muted">(Optional)</span></label>
@@ -185,7 +202,14 @@
             </div>
 
             <div class="row">
-              <div class="col-md-4 mb-3">
+              <div class="col-md-3 mb-3">
+                <label for="zip">City<span class="text-muted">(Required)</span></label>
+                <input type="text" class="form-control" id="surveyCity" placeholder="" required>
+                <div class="invalid-feedback">
+                  City code required.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
                 <label for="state">State</label>
                 <select class="custom-select d-block w-100" id="surveyState" required>
                   <option value="">Choose...</option>
@@ -241,7 +265,6 @@
                   <option value="WI">Wisconsin</option>
                   <option value="WY">Wyoming</option>
                 </select>
-                </select>
                 <div class="invalid-feedback">
                   Please provide a valid state.
                 </div>
@@ -253,9 +276,86 @@
                   Zip code required.
                 </div>
               </div>
+
+            </div>
+            <h4 class="mb-3">Legal Description</h4>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="lot">Lot</label>
+                <input type="text" class="form-control" id="lot" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="block">Block</label>
+                <input type="text" class="form-control" id="block" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="">Long Legal<span class="text-muted"> (Click if Long Legal)</span></label>
+                <input type="checkbox" class="form-control" id="longLegal" value="Yes">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="county">County</label>
+                <input type="text" class="form-control" id="county" placeholder="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="subdivision">Subdivision</label>
+                <input type="text" class="form-control" id="subdivision" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="plat">Plat Book</label>
+                <input type="text" class="form-control" id="plat" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="page">Page</label>
+                <input type="text" class="form-control" id="page" placeholder="">
+              </div>
+            </div>
+            <h4 class="mb-3">Flood Zone Information</h4>
+            <div class="row">
+              <div class="col-md-2 mb-2">
+                <label for="flood-zone">Flood Zone</label>
+                <input type="text" class="form-control" id="flood-zone" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="base-flood">Base Flood</label>
+                <input type="text" class="form-control" id="base-flood" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="community">Community</label>
+                <input type="text" class="form-control" id="community" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="panel">Panel No.</label>
+                <input type="text" class="form-control" id="panel" placeholder="">
+              </div>
+              <div class="col-md-2 mb-2">
+                <label for="firm-date">Firm Date</label>
+                <input type="text" class="form-control" id="firm-date" placeholder="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="date-needed">Date Needed</label>
+                <input type="date" class="form-control" id="date-needed" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cost">Cost</label>
+                <input type="text" class="form-control" id="cost" placeholder="">
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="elev-cost">Elevation Cost</label>
+                <input type="text" class="form-control" id="elev-cost" placeholder="">
+              </div>              
+            </div>
+            <div class="row">
+              <label>Comments</label>
+              <div class="col-md-12">
+                <textarea id="comment" rows="5" cols="100"></textarea>
+              </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" id="">Order Survey</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitButton" style="width: 25%; margin: auto">Edit Survey</button>
           </form>
         </div>
       </div>
@@ -274,33 +374,16 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
+    
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="../../assets/js/vendor/holder.min.js"></script>
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
-
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-    </script>
+    
   </body>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/editsurvey.js"></script>
 </html>

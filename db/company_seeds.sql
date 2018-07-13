@@ -6,3 +6,6 @@ INSERT INTO company VALUES (680, "Rafael Fabian, P.A.", "10631 NORTH KENDALL DRI
 INSERT INTO company VALUES (717, "Trident Title, A Division Of Landcastle Title Group, LLC", "7975 NW 154TH STREET #220", "Miami Lakes","Fl", "305-351-0744", "Christina")
 INSERT INTO company VALUES (681, "M G Title Services, Inc.", "8301 CORAL WAY", "Miami","Fl", "305-261-4550", "Raida")
 INSERT INTO company VALUES (004, "Columbia Title Of Florida, Inc. D/B/A Ewm Title", "550 SOUTH DIXIE HIGHWAY", "Coral Gables","Fl", "305-960-2559", "Jennifer")
+insert into company (cid, name, address, city, state, zip, phone, attention) values (717, "Trident Title, A Division of Landcastle Group", "7975 NW 154TH STREET #220
+", "Miami Lakes", "Fl", 33016, "305-351-0744", "Christina")
+insert into company (cid, name, address, city, state, zip, phone, attention) values (368, "Titlequest", "18503 PINES BLVD. SUITE 213", "Pembroke Pines", "Fl", 33029, "954-437-3540", "Jaquie")

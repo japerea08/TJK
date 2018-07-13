@@ -58,7 +58,23 @@ $(document).ready(function(){
   //add realtime listener
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
-      console.log("hi " + firebaseUser.uid);
+      var user ={
+        id: firebaseUser.uid
+      };
+      console.log(user);
+      //make a call to the database to check if user is admin or regular
+      $.get("/api/user/" + firebaseUser.uid, function(data,status){
+        console.log(data[0].admin);
+        //check if admin
+        if(data[0].admin){
+          window.location = "/dashboard";
+           firebase.auth().signOut().then(()=>{
+
+          }).catch(err =>{
+            console.log(err);
+          });
+        }
+      });
     }
     else{
       console.log("not logged in");

@@ -15,6 +15,23 @@ function printQuestionMarks(num) {
 
 
 const orm = {
+
+	getOne: function(table, col1, val, col2, cb){
+		/*var queryString = "SELECT ? FROM ?? WHERE ? = ?";
+		connection.query(queryString,[col1, table, col2, val], function(err, result){
+			if(!!err)
+				throw err;
+			cb(result);
+		});*/
+		var queryString ="SELECT ?? FROM ?? WHERE ?? = ?";
+		connection.query(queryString,[col1,table,col2,val],function(err, result){
+			if(!!err)
+				throw err;
+			cb(result);
+		});
+
+	},
+
 	selectAll: function(table, cb){
 		var queryString = "SELECT * FROM ??";
 		connection.query(queryString,[table], function(err, result){

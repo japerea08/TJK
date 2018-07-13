@@ -18,3 +18,5 @@ CREATE TABLE user(uuid VARCHAR(30) NOT NULL, cid SMALLINT, name VARCHAR(30), ema
 
 CREATE TABLE employee(ssn SMALLINT NOT NULL, name VARCHAR(30) NOT NULL, hourly_rate float, phone CHAR(12), PRIMARY KEY(ssn));
 
+CREATE TABLE ordered (cid SMALLINT NOT NULL, snum INT NOT NULL, PRIMARY KEY(cid, snum), foreign key(cid)references company(cid),
+foreign key(snum) references survey(snum));

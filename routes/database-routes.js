@@ -2,6 +2,7 @@ const Survey = require("../models/survey.js");
 const Company = require("../models/company.js");
 const Elevation = require("../models/elevation.js");
 const Legal = require("../models/legal.js");
+const User = require("../models/user.js");
 
 
 module.exports = function(app) {
@@ -19,6 +20,14 @@ module.exports = function(app) {
   			console.log(data);
   			res.send(data);
   		});
+  });
+
+  app.get("/api/user/:uuid", function(req, res){
+    console.log(req.params.uuid);
+    User.getOne(req.params.uuid, function(data){
+      res.send(data);
+    });
+
   });
 
   //these are the posts

@@ -72,9 +72,8 @@ $.get("/api/orders", function(el){
 
 	//listener for the row
 	$("tr").on("click", function(){
-		console.log($(this).attr("value"));
-		table.hide();
-		
+		window.location = "/editsurvey/"+$(this).attr("value");
+
 	});
 });
 
