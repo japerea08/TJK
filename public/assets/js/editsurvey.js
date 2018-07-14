@@ -15,7 +15,8 @@ const surveyFields = {
 	date_paid: "date_paid",
 	comment:"comment",
 	contactName: "contact_for_access",
-	contactNumber: "contact_number"
+	contactNumber: "contact_number",
+	cost: "cost"
 };
 
 const companyFields = {
@@ -68,7 +69,7 @@ $("#comment").bind("input propertychange", function(){
 //the onclick for the submit button
 $("#submitButton").on("click", e =>{
 	console.log(surveyFields.comment);
-	e.preventDefault();
+	//e.preventDefault();
 	//use changes to build the objects to be passed
 	var survey =[];
 	var elevation = [];
@@ -106,6 +107,9 @@ $("#submitButton").on("click", e =>{
 			type: "PUT",
 			data: info
 		}).then(function(){
+			e.preventDefault();
+			//window.history.back();
+			window.location = "/database.html";
 			alert("Good");
 		});
 	}
@@ -117,6 +121,9 @@ $("#submitButton").on("click", e =>{
 			type: "PUT",
 			data: info
 		}).then(function(){
+			e.preventDefault();
+			//window.history.back();
+			window.location = "/database.html";
 			alert("Good");
 		});
 	}
@@ -128,6 +135,9 @@ $("#submitButton").on("click", e =>{
 			type: "PUT",
 			data: info
 		}).then(function(){
+			e.preventDefault();
+			//window.history.back();
+			window.location = "/database.html";
 			alert("Good");
 		});
 	}
@@ -139,9 +149,13 @@ $("#submitButton").on("click", e =>{
 			type: "PUT",
 			data: info
 		}).then(function(){
-			alert("Good");
+			e.preventDefault();
+			//window.history.back();
+			window.location = "/database.html";
+			alert("Good"); 
 		});
 	}
+	//window.history.back();
 	
 	//this post creates the new survey order, along with the legal, elevation, and company
 	//check for validation
