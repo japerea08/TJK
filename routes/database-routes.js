@@ -14,6 +14,36 @@ module.exports = function(app) {
 	  });
   });
 
+  //route for search
+  app.get("/api/snumsearch/:snum", function(req, res){
+    //console.log(req.params.snum);
+    var pattern = "%"+req.params.snum + "%";
+    Survey.search(pattern, "snum", function(data){
+      res.send(data);
+    });
+  });
+  app.get("/api/buysearch/:buyer", function(req, res){
+    console.log(req.params.buyer);
+    var pattern = "%"+req.params.buyer + "%";
+    Survey.search(pattern, "buyer", function(data){
+      res.send(data);
+    });
+  });
+  app.get("/api/addsearch/:address", function(req, res){
+    console.log(req.params.address);
+    var pattern = "%"+req.params.address + "%";
+    Survey.search(pattern, "address", function(data){
+      res.send(data);
+    });
+  });
+  app.get("/api/citysearch/:city", function(req, res){
+    console.log(req.params.city);
+    var pattern = "%"+req.params.city + "%";
+    Survey.search(pattern, "city", function(data){
+      res.send(data);
+    });
+  });
+
   //route to get legal description
   app.get("/api/legal/:snum", function(req, res){
       console.log(req.params.snum);

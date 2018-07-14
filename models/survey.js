@@ -32,7 +32,13 @@ const survey = {
     orm.updateOne("survey","snum",id,cols,vals, function(res){
       cb(res);
     });
-  }
+  },
+
+  search: function(pattern, col, cb){
+    orm.search(pattern, col, function(res){
+      cb(res);
+    });
+  },
 
 };
 

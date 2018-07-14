@@ -16,6 +16,15 @@ function printQuestionMarks(num) {
 
 const orm = {
 
+	search: function(pattern, col, cb){
+		var queryString = "SELECT * FROM survey WHERE ?? LIKE ?";
+		connection.query(queryString, [col, pattern], function(err, result){
+			if(!!err)
+				throw err;
+			cb(result);
+		})
+	},
+
 	getOne: function(table, col1, val, col2, cb){
 		var queryString ="SELECT ?? FROM ?? WHERE ?? = ?";
 		connection.query(queryString,[col1,table,col2,val],function(err, result){

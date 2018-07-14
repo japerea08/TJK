@@ -4,6 +4,79 @@ const table = $("tbody");
 $.get("/api/orders", function(el){
 	data = el;
 }).then(()=>{
+	fillPage(data);
+	
+});
+
+//listener on button
+$("#searchButton").on("click", function(){
+	//grab value from input
+	if($("#search").val().length > 0){
+		var query = $("#search").val();
+		console.log(query);
+
+		$.get("/api/snumsearch/" + query, function(data){
+			//data is what is returned
+			if(jQuery.isEmptyObject(data)){
+				console.log("empty");
+				//call next method
+				$.get("/api/buysearch/" + query, function(data){
+					if(jQuery.isEmptyObject(data)){
+						//call next method
+						$.get("/api/addsearch/" + query, function(data){
+							if(jQuery.isEmptyObject(data)){
+								//call next
+								$.get("/api/citysearch/" + query, function(data){
+									if(jQuery.isEmptyObject(data)){
+										alert("Nothing Found");
+									}
+									else{
+										console.log(data);
+										//not empty so populate page
+										$("tbody tr").remove();
+										fillPage(data);
+									}
+								}); 
+							}
+							else{
+								console.log(data);
+								//not empty so populate page
+								$("tbody tr").remove();
+								fillPage(data);
+							}
+						});
+					}
+					else{
+						console.log(data);
+						//not empty so populate page
+						$("tbody tr").remove();
+						fillPage(data);
+					}
+
+				});
+			}
+			else{
+				console.log(data);
+				//not empty so populate page
+				$("tbody tr").remove();
+				fillPage(data);
+
+			}
+		});
+		$("#search").val("");
+	}
+
+
+});
+
+$("#resetButton").on("click", function(){
+	$.get("/api/orders", function(el){
+		fillPage(el);
+	});
+
+});
+
+function fillPage(data){
 	data.forEach(function(element){
 	console.log(element);
 	//new row
@@ -75,7 +148,8 @@ $.get("/api/orders", function(el){
 		window.location = "/editsurvey/"+$(this).attr("value");
 
 	});
-});
+
+};
 
 
 
