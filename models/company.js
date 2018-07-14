@@ -9,6 +9,25 @@ const company = {
     });
   },
 
+  selectInfo: function(cb){
+    orm.selectInfo(function(res){
+      cb(res);
+    });
+  },
+
+  getLastOne: function(cb){
+    orm.getLastOne("cid","company",function(res){
+      cb(res);
+    });
+  },
+
+  getOne: function(val, cb){
+    //orm.getOne("user", "admin", val, "uuid", cb);
+    orm.getOne("company", "*", val, "cid", function(res){
+      cb(res);
+    });
+  },
+
   insert: function(cols, vals, cb){
     orm.insertOne("company",cols, vals, function(res){
       cb(res);

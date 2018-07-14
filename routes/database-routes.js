@@ -3,6 +3,7 @@ const Company = require("../models/company.js");
 const Elevation = require("../models/elevation.js");
 const Legal = require("../models/legal.js");
 const User = require("../models/user.js");
+const Ordered = require("../models/ordered.js");
 
 
 module.exports = function(app) {
@@ -17,10 +18,34 @@ module.exports = function(app) {
   app.get("/api/number", function(req, res) {
   		//get last record
   		Survey.getLastOne(function(data){
-  			console.log(data);
   			res.send(data);
+        console.log(data);
   		});
   });
+
+  app.get("/api/companyId", function(req, res) {
+      //get last record
+      Company.getLastOne(function(data){
+        res.send(data);
+        console.log(data);
+      });
+  });
+
+  app.get("/api/companies", function(req, res) {
+
+      Company.selectInfo(function(data){
+        console.log(data);
+        res.send(data);
+      });
+  });
+
+    app.get("/api/company/:cid", function(req, res) {
+      //getOne: function(table, col1, val, col2, cb)
+      console.log(req.params.cid);
+      Company.getOne(req.params.cid, function(data){
+        res.send(data);
+      });
+  });   
 
   app.get("/api/user/:uuid", function(req, res){
     console.log(req.params.uuid);
@@ -30,14 +55,20 @@ module.exports = function(app) {
 
   });
 
+  app.post("/api/createorder", function(req, res){
+    console.log("creaqateorder: " +req.body);
+
+    //Ordered.insert(cols, vals, function(result){
+
+    //});
+  });
+
   //these are the posts
   app.post("/api/create", function(req, res) {
   	var cols = [];
   	var vals = [];
   	//insert new survey order
   	for (var key in req.body) {
-    	// skip loop if the property is from prototype
-    	//if (!req.body.hasOwnProperty(key)) continue;
     	//the key is the name of the table
     	//console.log(key);
     	var obj = req.body[key];
@@ -65,15 +96,16 @@ module.exports = function(app) {
     			//res.send(result);
     		});
     	}
+      else if(key === "ordered"){
+        Ordered.insert(cols, vals, function(result){
+
+        });
+      }
     	else if(key === "legal"){
     		Legal.insert(cols, vals, function(result){
     			//res.send(result);
     		});
     	}
-    	/*console.log(key);
-    	for(var i = 0; i < vals.length; i++){
-    		console.log(cols[i]+" "+vals[i]);
-    	}*/
 	    cols = [];
 	    vals= [];
 	}

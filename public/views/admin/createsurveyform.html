@@ -54,11 +54,8 @@
                 </div>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="lastName">Last name<span class="text-muted">(Required)</span></label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                <label for="lastName">Last name<span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="">
               </div>
               
             </div>
@@ -330,7 +327,10 @@
               </div>
               <div class="col-md-2 mb-2">
                 <label for="community">Community</label>
-                <input type="text" class="form-control" id="community" placeholder="">
+                <input type="text" class="form-control" id="community" placeholder="" required>
+                <div class="invalid-feedback">
+                  Community Number required.
+                </div>
               </div>
               <div class="col-md-2 mb-2">
                 <label for="panel">Panel No.</label>
@@ -362,7 +362,7 @@
               </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitButton" style="width: 10%; margin: auto">Create Survey</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitButton" style="width: 25%; margin: auto">Create Survey</button>
           </form>
         </div>
       </div>

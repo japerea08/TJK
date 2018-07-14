@@ -1,14 +1,7 @@
 const orm = require("../config/orm.js");
 
 //functions to call the orm functions
-const user = {
-  getOne: function(val,cb){
-    orm.getOne("user", "admin", val, "uuid", function(res){
-      cb(res);  
-    });
-    
-  },
-
+const ordered = {
   selectAll: function(cb){
     //call the orm function
     orm.selectAll("survey", function(res){
@@ -17,13 +10,13 @@ const user = {
   },
 
   getLastOne: function(cb){
-    orm.getLastOne(function(res){
+    orm.getLastOne("snum","survey",function(res){
       cb(res);
     });
   },
 
   insert: function(cols, vals, cb){
-    orm.insertOne("survey",cols, vals, function(res){
+    orm.insertOne("ordered",cols, vals, function(res){
       cb(res);
     });
   },
@@ -36,4 +29,4 @@ const user = {
 
 };
 
-module.exports = user;
+module.exports = ordered;

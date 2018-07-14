@@ -17,12 +17,6 @@ function printQuestionMarks(num) {
 const orm = {
 
 	getOne: function(table, col1, val, col2, cb){
-		/*var queryString = "SELECT ? FROM ?? WHERE ? = ?";
-		connection.query(queryString,[col1, table, col2, val], function(err, result){
-			if(!!err)
-				throw err;
-			cb(result);
-		});*/
 		var queryString ="SELECT ?? FROM ?? WHERE ?? = ?";
 		connection.query(queryString,[col1,table,col2,val],function(err, result){
 			if(!!err)
@@ -42,9 +36,17 @@ const orm = {
 		});
 	},
 
-	getLastOne: function(cb){
+	selectInfo: function(cb){
+		connection.query("SELECT cid, name FROM company", function(err, result){
+			if(!!err)
+				throw err;
+			cb(result);
+		});
+	},
+
+	getLastOne: function(col, table, cb){
 		var queryString = "";
-		connection.query("SELECT snum FROM survey ORDER BY snum DESC LIMIT 1", function(err, result){
+		connection.query("SELECT ?? FROM ?? ORDER BY ?? DESC LIMIT 1",[col,table,col], function(err, result){
 			if(!!err)
 				throw err;
 			cb(result);

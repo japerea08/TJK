@@ -10,7 +10,7 @@ const survey = {
   },
 
   getLastOne: function(cb){
-    orm.getLastOne(function(res){
+    orm.getLastOne("snum","survey",function(res){
       cb(res);
     });
   },
