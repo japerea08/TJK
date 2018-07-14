@@ -9,6 +9,13 @@ const ordered = {
     });
   },
 
+  getOne: function(val, cb){
+    //function(table, col1, val, col2, cb)
+    orm.getOne("ordered", "cid", val, "snum", function(res){
+      cb(res);
+    });
+  },
+
   getLastOne: function(cb){
     orm.getLastOne("snum","survey",function(res){
       cb(res);

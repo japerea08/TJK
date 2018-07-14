@@ -72,9 +72,26 @@ const orm = {
 
 	},
 
-	updateOne: function(id, cb){
-		var queryString = "UPDATE burgers SET devoured = true WHERE id = ?";
-		connection.query(queryString, [id], function(err, result){
+	//orm.updateOne(table,"snum",id,cols,vals, function(res
+	updateOne: function(table, key, snum, cols, vals, cb){
+		//UPDATE `tjk_db`.`survey` SET `buyer`='Test', `contact_for_access`='Testy' WHERE `snum`='180029';
+
+		//var queryString = "UPDATE burgers SET devoured = true WHERE id = ?";
+		//build values
+		var values = "";
+		for(var i = 0 ; i < cols.length; i++){
+			if(i == cols.length-1){
+				//dont add comma
+				values += (cols[i] + " = " +"'"+vals[i] +"'" + " ");
+			}
+			else{
+				values += (cols[i] + " = " +"'"+vals[i] +"'" + ", ");
+			}
+		}
+
+		var queryString = "UPDATE " + table + " SET " + values + "WHERE ?? = ?";
+		console.log(queryString);
+		connection.query(queryString, [key, snum], function(err, result){
 			if(!!err)
 				throw err;
 			cb(result);

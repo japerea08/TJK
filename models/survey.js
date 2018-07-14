@@ -9,6 +9,13 @@ const survey = {
     });
   },
 
+  getOne: function(val, cb){
+    //function(table, col1, val, col2, cb)
+    orm.getOne("survey", "*", val, "snum", function(res){
+      cb(res);
+    });
+  },
+
   getLastOne: function(cb){
     orm.getLastOne("snum","survey",function(res){
       cb(res);
@@ -21,8 +28,8 @@ const survey = {
     });
   },
 
-  update: function(id, cb){
-    orm.updateOne(id, function(res){
+  update: function(id, cols, vals, cb){
+    orm.updateOne("survey","snum",id,cols,vals, function(res){
       cb(res);
     });
   }

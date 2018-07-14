@@ -20,3 +20,5 @@ CREATE TABLE employee(ssn SMALLINT NOT NULL, name VARCHAR(30) NOT NULL, hourly_r
 
 CREATE TABLE ordered (cid SMALLINT NOT NULL, snum INT NOT NULL, PRIMARY KEY(cid, snum), foreign key(cid)references company(cid),
 foreign key(snum) references survey(snum));
+
+UPDATE `tjk_db`.`survey` SET `buyer`='Jim Tester' WHERE `snum`='180032';

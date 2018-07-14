@@ -14,6 +14,39 @@ module.exports = function(app) {
 	  });
   });
 
+  //route to get legal description
+  app.get("/api/legal/:snum", function(req, res){
+      console.log(req.params.snum);
+      Legal.getOne(req.params.snum, function(data){
+        res.send(data);
+      });
+  });
+
+  //route to get elevation
+   app.get("/api/elevation/:snum", function(req, res){
+      console.log(req.params.snum);
+      Elevation.getOne(req.params.snum, function(data){
+        res.send(data);
+      });
+  });
+
+
+  //route to get a single survey
+  app.get("/api/survey/:snum", function(req, res){
+      console.log(req.params.snum);
+      Survey.getOne(req.params.snum, function(data){
+        res.send(data);
+      });
+  });
+
+  //route to get back the company that order a survey
+  app.get("/api/order/:snum", function(req, res){
+      console.log(req.params.snum);
+      Ordered.getOne(req.params.snum, function(data){
+        res.send(data);
+      });
+  });
+
   //route 
   app.get("/api/number", function(req, res) {
   		//get last record
@@ -55,12 +88,91 @@ module.exports = function(app) {
 
   });
 
-  app.post("/api/createorder", function(req, res){
-    console.log("creaqateorder: " +req.body);
+  app.put("/api/update/:snum", function(req,res){
+    console.log(req.params.snum);
+    console.log(req.body.table);
+    var cols =[];
+    var vals = [];
+    if(req.body.table === "survey"){
+      req.body.fields.forEach(i=>{
+        //seperate into cols and vals
+        var values = i.split(":");
+        cols.push(values[0]);
+        vals.push(values[1]);
+      });
+      console.log(cols);
+      console.log(vals);
+      //update survey table
+      Survey.update(req.params.snum, cols, vals, function(result){
 
-    //Ordered.insert(cols, vals, function(result){
+          if(result.changedRows ==0){
+            return res.status(404).end();
+          }
+          else{
+            res.status(200).end();
+          }
+      });
+    }
+    else if(req.body.table === "company"){
+      //update company table
+      req.body.fields.forEach(i=>{
+        //seperate into cols and vals
+        var values = i.split(":");
+        cols.push(values[0]);
+        vals.push(values[1]);
+      });
+      console.log(cols);
+      console.log(vals);
+      Company.update(req.params.snum, cols, vals, function(result){
 
-    //});
+          if(result.changedRows ==0){
+            return res.status(404).end();
+          }
+          else{
+            res.status(200).end();
+          }
+      });
+    }
+    else if(req.body.table === "elevation"){
+      //update elevation table
+      req.body.fields.forEach(i=>{
+        //seperate into cols and vals
+        var values = i.split(":");
+        cols.push(values[0]);
+        vals.push(values[1]);
+      });
+      console.log(cols);
+      console.log(vals);
+      Elevation.update(req.params.snum, cols, vals, function(result){
+
+          if(result.changedRows ==0){
+            return res.status(404).end();
+          }
+          else{
+            res.status(200).end();
+          }
+      });
+    }
+    else if(req.body.table === "legal"){
+      //update legal table
+      req.body.fields.forEach(i=>{
+        //seperate into cols and vals
+        var values = i.split(":");
+        cols.push(values[0]);
+        vals.push(values[1]);
+      });
+      console.log(cols);
+      console.log(vals);
+      Legal.update(req.params.snum, cols, vals, function(result){
+
+          if(result.changedRows ==0){
+            return res.status(404).end();
+          }
+          else{
+            res.status(200).end();
+          }
+      });
+    }
   });
 
   //these are the posts
@@ -110,15 +222,5 @@ module.exports = function(app) {
 	    vals= [];
 	}
   });
-
-  app.delete("/api/authors/:id", function(req, res) {
-    db.Author.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbAuthor) {
-      res.json(dbAuthor);
-    });
- });
 
 };

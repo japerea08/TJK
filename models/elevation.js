@@ -9,6 +9,13 @@ const elevation = {
     });
   },
 
+   getOne: function(val, cb){
+    //function(table, col1, val, col2, cb)
+    orm.getOne("elevation", "*", val, "elev_id", function(res){
+      cb(res);
+    });
+  },
+
   getLastOne: function(cb){
     orm.getLastOne(function(res){
       cb(res);
@@ -21,8 +28,8 @@ const elevation = {
     });
   },
 
-  update: function(id, cb){
-    orm.updateOne(id, function(res){
+   update: function(id, cols, vals, cb){
+    orm.updateOne("elevation","elev_id",id,cols,vals, function(res){
       cb(res);
     });
   }

@@ -9,6 +9,13 @@ const legal = {
     });
   },
 
+   getOne: function(val, cb){
+    //function(table, col1, val, col2, cb)
+    orm.getOne("legal_desc", "*", val, "ldid", function(res){
+      cb(res);
+    });
+  },
+
   getLastOne: function(cb){
     orm.getLastOne(function(res){
       cb(res);
@@ -21,8 +28,8 @@ const legal = {
     });
   },
 
-  update: function(id, cb){
-    orm.updateOne(id, function(res){
+  update: function(id, cols, vals, cb){
+    orm.updateOne("legal_desc","ldid",id,cols,vals, function(res){
       cb(res);
     });
   }

@@ -35,8 +35,8 @@ const company = {
   },
 
 
-  update: function(id, cb){
-    orm.updateOne(id, function(res){
+   update: function(id, cols, vals, cb){
+    orm.updateOne("company","cid",id,cols,vals, function(res){
       cb(res);
     });
   }
